@@ -14,4 +14,4 @@ class CardSerializer(serializers.ModelSerializer):
 class InvoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Invoice
-        fields = ['id', 'invoice_no', 'name', 'status']
+        fields = ['id', 'amount', 'status']

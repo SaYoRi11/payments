@@ -16,7 +16,7 @@ class Card(models.Model):
     cvv = SecurityCodeField()
     balance = models.FloatField()
     email = models.EmailField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='card_details')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='card_details', null=True)
     
     def __str__(self):
         return self.card_no
@@ -28,11 +28,10 @@ class Invoice(models.Model):
         ('Approved', 'Approved')
     )
 
-    invoice_no = models.CharField(max_length=10)
-    name = models.CharField(max_length=50)
+    amount = models.FloatField(default=0)
     status = models.CharField(max_length=20, choices=status_choices, default='Pending')
 
     def __str__(self):
-        return self.invoice_no
+        return str(self.id)
 
 
